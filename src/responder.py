@@ -1,4 +1,5 @@
-from transforms import JudgeResult, PolicyAction
+from .transforms import JudgeResult, PolicyAction
+
 
 
 def respond_allow(user_text: str) -> str:
