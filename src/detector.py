@@ -1,7 +1,8 @@
 import json
 import argparse
-from transforms import judge_request
-from responder import generate_response
+from src.transforms import judge_request
+from src.responder import generate_response
+
 
 
 def run_single(query: str) -> None:
