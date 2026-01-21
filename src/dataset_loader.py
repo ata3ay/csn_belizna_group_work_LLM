@@ -5,8 +5,6 @@ from pathlib import Path
 from typing import Iterable, List, Dict, Any, Set
 
 
-# Какие поля мы считаем "вопросами", которые надо прогонять через judge.
-# Поддерживает AdvBench / AutoDAN / GPTFuzzer / malicious_* и intention_choices.
 CANDIDATE_TEXT_KEYS = [
     "query",
     "prompt",
@@ -37,7 +35,6 @@ def _extract_strings(obj: Any, out: List[str]) -> None:
         return
     if isinstance(obj, dict):
         for k, v in obj.items():
-            # если ключ похож на "текстовый" — забираем
             if k in CANDIDATE_TEXT_KEYS and isinstance(v, (str, list, dict)):
                 _extract_strings(v, out)
         return
@@ -57,7 +54,6 @@ def load_queries_from_json(path: str | Path) -> List[str]:
     else:
         return []
 
-    # дедупликация, но сохраняем порядок
     seen: Set[str] = set()
     uniq: List[str] = []
     for s in raw:

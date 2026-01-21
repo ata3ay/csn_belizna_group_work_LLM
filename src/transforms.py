@@ -1,21 +1,3 @@
-"""
-Guardrail Judge:
-✅ 1) Actionability detector (operational "how-to" requests)
-✅ 2) Deobfuscation (l33t + spaced/separated words)
-✅ 3) Allowlist (defensive contexts + safe-tech)
-✅ 4) Evidence structured output (signals)
-➕ 5) Jailbreak / roleplay / "ignore policy" detector
-➕ 6) Evasion / stealth detector
-➕ 7) Defamation / reputation-harm detector
-➕ 8) Tax evasion / financial fraud detector
-➕ 9) Extra domains from GPTFuzzer residuals:
-    - psych manipulation, bullying, misinfo/propaganda, drug misuse,
-      cyber-attack techniques, identity/credit fraud, physical harm phrasing
-
-Returns: ALLOW / SAFE_COMPLETE / REFUSE
-This is a demo for safety education (no harmful instruction generation).
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -44,8 +26,6 @@ class JudgeResult:
     signals: Dict[str, Any] = field(default_factory=dict)
 
 
-# --- Domain signals (coarse) ---
-# NOTE: This is a demo list. You'll tune it with benchmarks (AdvBench/AutoDAN/GPTFuzzer).
 HARMFUL_DOMAIN_KEYWORDS = [
     # cyber / abuse
     "hack", "bypass", "exploit", "malware", "phishing", "ddos", "dox",
