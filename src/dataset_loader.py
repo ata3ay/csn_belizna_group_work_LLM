@@ -21,7 +21,6 @@ CANDIDATE_TEXT_KEYS = [
 
 
 def _extract_strings(obj: Any, out: List[str]) -> None:
-    """Рекурсивно достает строки из dict/list (на случай вложенных структур)."""
     if obj is None:
         return
     if isinstance(obj, str):
@@ -64,7 +63,6 @@ def load_queries_from_json(path: str | Path) -> List[str]:
 
 
 def load_queries_from_dir(dir_path: str | Path) -> Dict[str, List[str]]:
-    """Возвращает {filename: [queries...]}"""
     dir_path = Path(dir_path)
     datasets: Dict[str, List[str]] = {}
     for p in sorted(dir_path.glob("*.json")):
